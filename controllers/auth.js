@@ -11,7 +11,7 @@ const Usuario=require('../models/Users');
         Usuario.push(req.body);
         return res.status(201).send({'message': 'Se creo el usuario, proceda con el Login'});
         //return res.status(201).send({'token': service.createToken(Usuario)});
-        res.send(Usuario).status(200);   
+        //res.send(Usuario).status(200);   
             
     }else{
         res.sendStatus(400);

@@ -18,11 +18,13 @@ app.engine('.hbs', hbs({
 app.set('view engine', '.hbs');//definimos el view engine
 
 app.use('/api',api);
+
+//Renderizar
 app.get('/login',(req,res)=>{
   res.render('login');   
 });
 
-app.get('/api/employes/',(req,res)=>{
+app.get('/api/empleados/',(req,res)=>{
   res.render('employees');
 });
 
