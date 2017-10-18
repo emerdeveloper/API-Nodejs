@@ -1,0 +1,23 @@
+<script type="text/javascript">
+
+let employesList=document.createElement('ul');
+const myHeaders=new Headers();
+debugger;
+console.log(localStorage.miToken);
+myHeaders.append('authorization',`Bearer ${localStorage.miToken}`);
+    fetch('/api/employes',{
+        method:'GET',
+        headers:myHeaders   //enviamos la cabecera(donde enviamos authorization)
+    });
+    .then(res=>res.json())
+    .then(data=>{
+           data.employes.map(employe=>{
+            let text=document.createTextNode(employe.id);
+            let element=document.createElement('li');
+            element.appendChild(text);
+            employesList.appendChild(element);
+            console.log(data);
+        })
+        document.body,appendChild(employesList); 
+    });
+</script>

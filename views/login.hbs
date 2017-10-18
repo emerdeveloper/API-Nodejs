@@ -1,0 +1,33 @@
+<form method="post" id="login">
+    <input type="text" name="id" placeholder="id" value="">
+    <br><br>
+    <input type="text" name="name" placeholder="name" value="">
+    <br><br>
+    <input type="password" name="password" value="">
+    <br>
+    <br>
+    <input type="submit" value="login">
+</form>
+<script type="text/javascript">
+    const formLogin = document.querySelector('#login');//Alli esta el formulario  
+    const formData = new FormData(formLogin);  //objeto que incluira los datos del formulario- Usamos Api Javascript(toma los datos del formulario)
+
+    //recoge el evento del submit
+    formLogin, addEventListener('submit', event => {
+        event.preventDefault();//comportamiento por defecto de la página y que este no sea recargar la página
+        fetch('/api/logIn', {
+            method: 'POST',// Emitimos el form data que recibe una promesa con una respuesta
+            body: formData 
+        })
+        //devolvemos la respuesta en formato JSON
+    .then(res => {
+        res.json();
+        Response.redirect('http://localhost:3001/api/employes');
+        })
+    .then(data => {
+        console.log(data);
+        localStorage.setItem('miToken',data.token);
+        //
+    });
+    });
+</script>
